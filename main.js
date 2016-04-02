@@ -1,10 +1,10 @@
 (function(){
 
 var TEXT_LOADING = 'Loading...\n\n历史的行程: %s %';
-var TEXT_SCORE = '+ %s s';
-var TEXT_GAME_OVER = '我为长者续命%s秒';
-var TEXT_TRY_AGAIN = '重新续';
-var TEXT_PLAY_BGM = '请州长夫人演唱';
+var TEXT_SCORE = '+ %s 米';
+var TEXT_GAME_OVER = '你帮鸡师父跑了%s米';
+var TEXT_TRY_AGAIN = '重新开始';
+var TEXT_PLAY_BGM = '煎蛋观光团';
 
 
 var _gravity = 40,
