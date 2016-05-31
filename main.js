@@ -1,8 +1,8 @@
 (function(){
 
-var TEXT_LOADING = 'Loading...\n\n历史的行程: %s %';
+var TEXT_LOADING = 'Loading...\n\n臭臭泥流浪记: %s %';
 var TEXT_SCORE = '+ %s 米';
-var TEXT_GAME_OVER = '你帮鸡师父跑了%s米';
+var TEXT_GAME_OVER = '你帮臭臭泥二蛋浪了%s米';
 var TEXT_TRY_AGAIN = '重新开始';
 var TEXT_PLAY_BGM = '煎蛋观光团';
 
@@ -18,6 +18,9 @@ var _game;
 var _baseUrl = '';
 
 var _flapSound;
+
+var _numfrog = 2;
+var _random_int = 1;
 
 var _numScoreSounds = 10,
   _numHurtSounds = 9;
@@ -106,7 +109,7 @@ function preload() {
   initLoadingText();
   _game.load.onFileComplete.add(showLoadingText);
 
-  _game.load.spritesheet('frog', _baseUrl + 'images/frog.png', 80, 64);
+  //_game.load.spritesheet('frog', _baseUrl + 'images/frog.png', 80, 64);
   _game.load.spritesheet('clouds', _baseUrl + 'images/clouds.png', 128, 64);
 
   _game.load.image('pipe', _baseUrl + 'images/pipe.png');
@@ -122,6 +125,10 @@ function preload() {
   for (i = 1; i <= _numHurtSounds; i++) {
     loadAudio('hurt' + i, _baseUrl + 'sounds/hurt' + i);
   }
+  for (i = 1; i <= _numfrog; i++) {
+	_game.load.spritesheet('frog'+i, _baseUrl + 'images/frog'+i+'.png', 80, 64);
+  }
+  
 }
 
 function o() {
@@ -204,13 +211,17 @@ function initBackground() {
 }
 
 function initFrog() {
-  _frog = _game.add.sprite(0, 0, 'frog');
+  _random_int=parseInt(Math.random()*1000)%_numfrog+1
+  _frog = _game.add.sprite(0, 0, 'frog'+_random_int);
   _frog.anchor.setTo(0.5, 0.5);
   _frog.body.collideWorldBounds = true;
   _frog.body.gravity.y = _gravity;
 }
 
 function resetFrog() {
+	
+  _frog.destroy();
+  initFrog();
   _frog.body.allowGravity = false;
   _frog.angle = 0;
   _frog.scale.setTo(1, 1);
