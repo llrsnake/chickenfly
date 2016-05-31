@@ -30,7 +30,7 @@ var _scoreSounds = [],
 
 var _currentScoreSound;
 
-var _bgColor = 0xDDEEFF,
+var _bgColor = 0xDDEEFF, //0xDDEEFF
   _background;
 
 var _pipes,
@@ -127,6 +127,9 @@ function preload() {
   }
   for (i = 1; i <= _numfrog; i++) {
 	_game.load.spritesheet('frog'+i, _baseUrl + 'images/frog'+i+'.png', 80, 64);
+  }
+  for (i = 1; i <= _numfrog; i++) {
+	_game.load.spritesheet('dead_frog'+i, _baseUrl + 'images/dead_frog'+i+'.png', 80, 64);
   }
   
 }
@@ -226,6 +229,21 @@ function resetFrog() {
   _frog.angle = 0;
   _frog.scale.setTo(1, 1);
   _frog.reset(_game.world.width / 4, _game.world.height / 2);
+}
+
+function deadFrog(){
+var	dead_x = _frog.x,
+	dead_y = _frog.y,
+	dead_angle = _frog.angle;
+	_frog.destroy();
+	_frog = _game.add.sprite(dead_x, dead_y, 'dead_frog'+_random_int);
+	_frog.anchor.setTo(0.5, 0.5);
+	_frog.body.collideWorldBounds = true;
+	_frog.body.gravity.y = _gravity;
+	_frog.body.allowGravity = true;
+//	_frog.angle = dead_angle;
+//	_frog.scale.setTo(1, 1);
+
 }
 
 function initGround() {
@@ -382,6 +400,7 @@ function showScore() {
 
 function setGameOver() {
   _gameOver = true;
+  deadFrog();
   stopPipes();
   showGameOver();
   playHurtSound();
