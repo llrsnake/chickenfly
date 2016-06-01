@@ -112,6 +112,8 @@ function preload() {
   //_game.load.spritesheet('frog', _baseUrl + 'images/frog.png', 80, 64);
   _game.load.spritesheet('clouds', _baseUrl + 'images/shuimu.png', 128, 64);
 
+  _game.load.image('bg', _baseUrl + 'images/bg.png');
+  
   _game.load.image('pipe', _baseUrl + 'images/pipe.png');
   _game.load.image('ground', _baseUrl + 'images/ground.png');
 
@@ -207,10 +209,12 @@ function stopPipes() {
 }
 
 function initBackground() {
-  _background = _game.add.graphics(0, 0);
-  _background.beginFill(_bgColor, 1);
-  _background.drawRect(0, 0, _game.world.width, _game.world.height);
-  _background.endFill();
+ // _background = _game.add.graphics(0, 0);
+  //_background.beginFill(_bgColor, 1);
+  //_background.drawRect(0, 0, _game.world.width, _game.world.height);
+ // _background.endFill();
+  
+  game.add.image(0, 0, 'bg');
 }
 
 function initFrog() {
