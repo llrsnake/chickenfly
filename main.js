@@ -19,11 +19,11 @@ var _baseUrl = '';
 
 var _flapSound;
 
-var _numfrog = 2;
+var _numfrog = 3;
 var _random_int = 1;
 
-var _numScoreSounds = 10,
-  _numHurtSounds = 9;
+var _numScoreSounds = 1,
+  _numHurtSounds = 1;
 
 var _scoreSounds = [],
   _hurtSounds = [];
@@ -31,7 +31,8 @@ var _scoreSounds = [],
 var _currentScoreSound;
 
 var _bgColor = 0x80e4e3, //0xDDEEFF
-  _background;
+  _background,
+  _backsky;
 
 var _pipes,
   _pipeInvisibleLines,
@@ -114,6 +115,7 @@ function preload() {
 
   _game.load.image('pipe', _baseUrl + 'images/pipe.png');
   _game.load.image('ground', _baseUrl + 'images/ground.png');
+  _game.load.image('sky', _baseUrl + 'images/sky.png');
 
   loadAudio('bgm', _baseUrl + 'sounds/bgm');
   loadAudio('flap', _baseUrl + 'sounds/flap');
@@ -211,6 +213,8 @@ function initBackground() {
   _background.beginFill(_bgColor, 1);
   _background.drawRect(0, 0, _game.world.width, _game.world.height);
   _background.endFill();
+  
+  _backsky = _game.add.tileSprite(0, 0, _game.world.width, _game.world.height, 'sky');
 }
 
 function initFrog() {
@@ -570,7 +574,7 @@ function reset() {
 function create() {
   _game.stage.scaleMode = Phaser.StageScaleMode.SHOW_ALL;
   _game.stage.scale.setScreenSize(true);
-
+	
   initBackground();
   initPipes();
   initFrog();
