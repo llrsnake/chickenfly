@@ -30,7 +30,7 @@ var _scoreSounds = [],
 
 var _currentScoreSound;
 
-var _bgColor = 0xDDEEFF, //0xDDEEFF
+var _bgColor = 0x80e4e3, //0xDDEEFF
   _background;
 
 var _pipes,
@@ -110,7 +110,7 @@ function preload() {
   _game.load.onFileComplete.add(showLoadingText);
 
   //_game.load.spritesheet('frog', _baseUrl + 'images/frog.png', 80, 64);
-  _game.load.spritesheet('clouds', _baseUrl + 'images/clouds.png', 128, 64);
+  _game.load.spritesheet('clouds', _baseUrl + 'images/shuimu.png', 128, 64);
 
   _game.load.image('pipe', _baseUrl + 'images/pipe.png');
   _game.load.image('ground', _baseUrl + 'images/ground.png');
