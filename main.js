@@ -19,11 +19,11 @@ var _baseUrl = '';
 
 var _flapSound;
 
-var _numfrog = 2;
+var _numfrog = 3;
 var _random_int = 1;
 
-var _numScoreSounds = 10,
-  _numHurtSounds = 9;
+var _numScoreSounds = 1,
+  _numHurtSounds = 1;
 
 var _scoreSounds = [],
   _hurtSounds = [];
