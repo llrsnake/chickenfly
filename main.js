@@ -31,7 +31,8 @@ var _scoreSounds = [],
 var _currentScoreSound;
 
 var _bgColor = 0x80e4e3, //0xDDEEFF
-  _background;
+  _background,
+  _backsky;
 
 var _pipes,
   _pipeInvisibleLines,
@@ -112,10 +113,9 @@ function preload() {
   //_game.load.spritesheet('frog', _baseUrl + 'images/frog.png', 80, 64);
   _game.load.spritesheet('clouds', _baseUrl + 'images/shuimu.png', 128, 64);
 
-  _game.load.image('bg', _baseUrl + 'images/bg.png');
-  
   _game.load.image('pipe', _baseUrl + 'images/pipe.png');
   _game.load.image('ground', _baseUrl + 'images/ground.png');
+  _game.load.image('sky', _baseUrl + 'images/sky.png');
 
   loadAudio('bgm', _baseUrl + 'sounds/bgm');
   loadAudio('flap', _baseUrl + 'sounds/flap');
@@ -209,12 +209,12 @@ function stopPipes() {
 }
 
 function initBackground() {
- // _background = _game.add.graphics(0, 0);
-  //_background.beginFill(_bgColor, 1);
-  //_background.drawRect(0, 0, _game.world.width, _game.world.height);
- // _background.endFill();
+  _background = _game.add.graphics(0, 0);
+  _background.beginFill(_bgColor, 1);
+  _background.drawRect(0, 0, _game.world.width, _game.world.height);
+  _background.endFill();
   
-  game.add.image(0, 0, 'bg');
+  _backsky = _game.add.tileSprite(0, 0, _game.world.width, _game.world.height, 'sky');
 }
 
 function initFrog() {
@@ -574,7 +574,7 @@ function reset() {
 function create() {
   _game.stage.scaleMode = Phaser.StageScaleMode.SHOW_ALL;
   _game.stage.scale.setScreenSize(true);
-
+	
   initBackground();
   initPipes();
   initFrog();
